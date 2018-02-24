@@ -2,6 +2,7 @@
 Gather market cap data for ERC20 tokens using an Ethereum address.
 
 Usage:
+
 Get-ERC20.ps1 -Address 0x1234567890123456789012345678901234567890
 
 Output:
