@@ -47,10 +47,12 @@ $coinMarketCapApi = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
 
 # Add TLS 1.2 communication
 function addTls12 () {
-    [System.Net.ServicePointManager]::SecurityProtocol += [System.Net.SecurityProtocolType]::Tls12
     if (([System.Net.ServicePointManager]::SecurityProtocol -match "tls12") -eq $false) {
-        Write-Host "Error: Powershell does not support TLS 1.2." -ForegroundColor Red
-        exit 1
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+        if (([System.Net.ServicePointManager]::SecurityProtocol -match "tls12") -eq $false) {
+            Write-Host "Error: Powershell does not support TLS 1.2." -ForegroundColor Red
+            exit 1
+        }
     }
 }
 
